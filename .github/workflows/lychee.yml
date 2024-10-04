@@ -17,12 +17,5 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         with: 
           token: ${{ secrets.CUSTOM_TOKEN }}
-
-      - name: Create Issue From File
-        if: env.lychee_exit_code != 0
-        uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: |
-            report
+          format: json
+          output: /lychee/links.json
